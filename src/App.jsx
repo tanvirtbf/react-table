@@ -53,11 +53,6 @@ function App() {
               ))}
             </tr>
           ))}
-          {/* <tr>
-            <th>ID</th>
-            <th>Gender</th>
-            <th>Salary</th>
-          </tr> */}
         </thead>
         <tbody {...getTableBodyProps()}>
           {
