@@ -1,4 +1,4 @@
-import { useTable } from "react-table";
+import { useTable, useSortBy } from "react-table";
 
 const data = [
   {
@@ -38,7 +38,7 @@ function App() {
     useTable({
       columns,
       data,
-    });
+    }, useSortBy);
 
   return (
     <div className="container">
@@ -46,9 +46,9 @@ function App() {
         <thead>
           {headerGroups.map((hg) => (
             <tr key={hg} {...hg.getHeaderGroupProps()}>
-              {hg.headers.map((header) => (
-                <th key={header} {...header.getHeaderProps()}>
-                  {header.render("Header")}
+              {hg.headers.map((column) => (
+                <th key={column} {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render("Header")}
                 </th>
               ))}
             </tr>
