@@ -1,3 +1,6 @@
+import { useTable } from 'react-table'
+
+
 function App() {
   const data = [
     {
@@ -17,9 +20,29 @@ function App() {
     },
   ];
 
+  const columns = [
+    {
+      Header:"ID",
+      accessor:"id"
+    },
+    {
+      Header:"Gender",
+      accessor:"gender"
+    },
+    {
+      Header:"Salary",
+      accessor:"salary"
+    },
+  ]
+
+  const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} = useTable({
+    columns,
+    data
+  })
+
   return (
     <div className="container">
-      <table>
+      <table {...getTableProps()}>
         <thead>
           <tr>
             <th>ID</th>
