@@ -59,14 +59,19 @@ function App() {
             <th>Salary</th>
           </tr> */}
         </thead>
-        <tbody>
-          {data.map((i) => (
-            <tr key={i.id}>
-              <td>{i.id}</td>
-              <td>{i.gender}</td>
-              <td>{i.gender}</td>
-            </tr>
-          ))}
+        <tbody {...getTableBodyProps()}>
+          {
+            rows.map((row) => {
+              prepareRow(row)
+              return <tr key={row} {...row.getRowProps()} >
+                {
+                  row.cells.map((cell) => (
+                    <td {...cell.getCellProps()} key={cell}>{cell.render('Cell')}</td>
+                  ))
+                }
+              </tr>
+            })
+          }
         </tbody>
       </table>
     </div>
